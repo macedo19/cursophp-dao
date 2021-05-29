@@ -33,10 +33,18 @@ require_once("config.php");
 
 //-----------------------------------------
 
+//Alteração de um usuario
+// $usuario = new Usuario();
+// $usuario->loadById(4);
+
+// $usuario->update("Gabriel", "songofh0o");
+
+//-----------------------------------------
+
 $usuario = new Usuario();
 
-$usuario->loadById(4);
+$usuario->loadById(7);
+$usuario->delete();
 
-$usuario->update("Gabriel", "songofh0o");
-
+echo $usuario;
 ?>
