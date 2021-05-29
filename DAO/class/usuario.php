@@ -87,7 +87,6 @@ class Usuario {
 
     public function setData($data){
 
-        
         $this->setIdusuario($data['idusuario']);
         $this->setDeslogin($data['deslogin']);
         $this->getDessenha($data['dessenha']);
@@ -105,6 +104,19 @@ class Usuario {
         if(count($results) > 0){
             $this->setData($results[0]);
         }
+    }
+
+    public function update($login, $password){
+        $this->setDeslogin($login);
+        $this->setDessenha($password);
+
+        $sql = new Sql();
+
+        $sql->query("UPDATE tb_usuarios SET deslogin = :LOGIN, dessenha = :PASSWORD WHERE idusuario = :ID", array(
+            ':LOGIN'=>$this->getDeslogin(),
+            ':PASSWORD'=>$this->getDessenha(),
+            ':ID'=>$this->getIdusuario()
+        ));
     }
 
     public function __construct($login = "", $password = ""){
